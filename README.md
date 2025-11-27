@@ -1,46 +1,52 @@
-<<<<<<< HEAD
-# 💻 Portfolio Projects
+# 🐍 Python Projects Repository
 
-A collection of Python, Java, C#, and C++ projects showcasing my skills for corporate readiness.  
-Each folder contains real-world style applications with code, documentation, and instructions.  
-
----
-
-## 📂 Projects by Language
-
-### 🐍 Python
-- **Lap Manager CLI** → Manage drivers & lap times (file I/O, error handling, loops)
-- **Automation Scripts** → Small tools for reports and data tasks
-- **API Dashboard** → Fetch and visualize data
-
-### ☕ Java
-- **Employee Management System** (Spring Boot + SQL)
-- **Banking Simulation**
-
-### 🎮 C#
-- **Inventory Management App** (WinForms/WPF)
-- **Data Visualization with Unity**
-
-### ⚡ C++
-- **High-Performance Calculator**
-- **Mini Search Engine**
+## 📖 Introduction
+Welcome to my **Python Projects Repository**!  
+This space is dedicated to all the projects I’m building to strengthen my skills in Python programming. Each project is designed to practice core concepts like **functions, loops, conditionals, data structures, and modular design**, while also exploring creative applications.
 
 ---
 
-## 🔑 Tech Highlights
-- Object-Oriented Programming (OOP)
-- Data Structures & Algorithms
-- Databases (SQL, JDBC, SQLite)
-- API integration & automation
-- Git/GitHub for version control
-- Enterprise frameworks (Spring Boot, .NET)
+## 🚀 What You’ll Find Here
+- **Beginner-friendly programs**: calculators, grading systems, and menu-driven tools  
+- **Intermediate projects**: filters, data processing, and interactive logic  
+- **Portfolio-ready builds**: documented, organized, and version-controlled for visibility  
 
 ---
 
-## 📌 Next Steps
-- Add more projects each month
-- Expand documentation
-- Showcase corporate-ready applications
-=======
-# Python
->>>>>>> a01b21e6975cc24defadab6b412bc8727c3d98f8
+## 🎯 Goals
+- Build a portfolio of practical Python projects  
+- Apply coding patterns like filtering and modular functions  
+- Share my learning journey with recruiters and peers  
+- Demonstrate problem-solving and creativity  
+
+---
+
+## 🛠️ Tech Stack
+- **Language**: Python 3  
+- **Tools**: GitHub for version control and documentation  
+- **Concepts practiced**:  
+  - Functions  
+  - Conditionals  
+  - Loops  
+  - Lists & dictionaries  
+  - Modular design  
+
+---
+
+## 📚 Example Projects
+- **Grading System v1** → Convert scores to letter grades, calculate averages, filter passing vs failing  
+- **Calculator Tool** → Perform math operations with menu-driven logic  
+- **Filter Challenges** → Separate values based on conditions (scores, numbers, strings)  
+
+---
+
+## 📌 Future Plans
+- Expand projects with **data visualization**  
+- Explore **file handling** (CSV, JSON)  
+- Build interactive apps with **Tkinter or PyQt**  
+- Experiment with **APIs and automation scripts**  
+
+---
+
+## 👨‍💻 About Me
+I’m a **Software Engineer** focused on Python development and portfolio building. My approach is hands-on: I dissect, experiment, and refine code to master patterns. This repository is both a **learning dojo** and a **portfolio showcase**.
