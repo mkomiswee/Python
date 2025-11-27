@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 💻 Portfolio Projects
 
 A collection of Python, Java, C#, and C++ projects showcasing my skills for corporate readiness.  
@@ -40,3 +41,6 @@ Each folder contains real-world style applications with code, documentation, and
 - Add more projects each month
 - Expand documentation
 - Showcase corporate-ready applications
+=======
+# Python
+>>>>>>> a01b21e6975cc24defadab6b412bc8727c3d98f8
