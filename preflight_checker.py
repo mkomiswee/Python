@@ -55,108 +55,110 @@ def valid_preflight_values(fuel, hydrualic_pressure, oil,temp):
         raise ValueError("Engine tempature is unrealstically high")    
 def preflight_oil(oil):
     if oil < 25:
-        return "NO-GO: Oil pressure critically low"
+        return ("NO-GO: Oil pressure critically low", 2)
     elif oil < 40:
-        return "WARNING: Oil pressure low"
+        return ("WARNING: Oil pressure low",1)
     elif oil <= 80:
-        return "OK: Oil pressure normal"
+        return ("OK: Oil pressure normal", 0)
     elif oil <= 115:
-        return "WARNING: Oil pressure high"
+        return ("WARNING: Oil pressure high",1)
     else:
-        return "NO-GO: Oil pressure dangerously high"
+        return ("NO-GO: Oil pressure dangerously high",2)
 
 
 def preflight_fuel(fuel):
     if fuel == 0:
-        return "NO-GO: Fuel critically low"
+        return ("NO-GO: Fuel critically low",2)
     elif 0 < fuel < 20:
-        return "WARNING: Fuel level low"
+        return ("WARNING: Fuel level low", 1)
     elif 20 <= fuel <= 100:
-        return "OK: Fuel level normal"
+        return ("OK: Fuel level normal", 0)
     else:
-        return "NO-GO: Fuel reading out of expected range"
+        return ("NO-GO: Fuel reading out of expected range",2)
 
 
 def prelflight_temp(temp):
     if temp < 100:
-        return "NO-GO: Engine temperature too cold for safe operation"
+        return ("NO-GO: Engine temperature too cold for safe operation",2)
     elif 100 <= temp <= 180:
-        return "WARNING: Engine warming up"
+        return ("WARNING: Engine warming up",1)
     elif 180 <= temp <= 245:
-        return "OK: Engine temperature normal"
+        return ("OK: Engine temperature normal",0)
     elif 245 <= temp <= 260:
-        return "WARNING: Engine temperature high"
+        return ("WARNING: Engine temperature high", 1)
     elif temp > 260:
-        return "NO-GO: Engine overheating"
+        return ("NO-GO: Engine overheating", 2)
     else:
-        return "NO-GO: Temperature reading out of expected range"
+        return ("NO-GO: Temperature reading out of expected range",2)
 
 
 def preflight_hydrualic_pressure(hydrualic_pressure):
     if hydrualic_pressure == 0:
-        return "NO-GO: No hydraulic power"
+        return ("NO-GO: No hydraulic power",2)
     elif 1 <= hydrualic_pressure <= 2500:
-        return "WARNING: Hydraulic pressure low"
+        return ("WARNING: Hydraulic pressure low",1)
     elif 2500 <= hydrualic_pressure <= 3000:
-        return "OK: Hydraulic pressure normal"
+        return ("OK: Hydraulic pressure normal",0)
     elif 3000 <= hydrualic_pressure <= 5000:
-        return "WARNING: Hydraulic pressure high"
+        return ("WARNING: Hydraulic pressure high",1)
     elif hydrualic_pressure > 5000:
-        return "NO-GO: Hydraulic pressure dangerously high"
+        return ("NO-GO: Hydraulic pressure dangerously high",2)
     else:
-        return "NO-GO: Hydraulic pressure reading out of expected range"
+        return ("NO-GO: Hydraulic pressure reading out of expected range",2)
 
 
 def evaluation_report(fuel, temp, hydrualic_pressure,oil, battery_voltage,brakes):
-    fuel_status = preflight_fuel(fuel)
-    hydrualic_status = preflight_hydrualic_pressure(hydrualic_pressure)
-    temp_status = prelflight_temp(temp)
-    oil_status = preflight_oil(oil)
-    electrical_status = electrical_system_check(battery_voltage)
-    brake_status = brake_pressure_check(brakes)
+    fuel_msg, fuel_status = preflight_fuel(fuel)
+    hydrualic_msg, hydrualic_status = preflight_hydrualic_pressure(hydrualic_pressure)
+    temp_msg, temp_status = prelflight_temp(temp)
+    oil_msg, oil_status = preflight_oil(oil)
+    electrical_msg, electrical_status = electrical_system_check(battery_voltage)
+    brake_msg, brake_status = brake_pressure_check(brakes)
 
     statuses = [temp_status, fuel_status, hydrualic_status, oil_status, electrical_status, brake_status]
 
-    if any("NO-GO" in s for s in statuses):
-        overall = "NO-GO"
-    elif any("WARNING" in s for s in statuses):
-        overall = "WARNING"
+    highest = max(statuses)
+
+    if highest == 2:
+        overall = ("NO GO", 2)
+    elif highest == 1:
+        overall = ("WARNING", 1)
     else:
-        overall = "OK"
+        overall = ("OK", 0)
 
     return {
-        "fuel_status": fuel_status,
-        "hydrualic_status": hydrualic_status,
-        "oil_status": oil_status,
-        "temp_status": temp_status,
-        "electrical_status": electrical_status,
-        "brake_status": brake_status,
+        "fuel_status": (fuel_msg, fuel_status),
+        "hydrualic_status": (hydrualic_msg, hydrualic_status),
+        "oil_status": (oil_msg,oil_status),
+        "temp_status": (temp_msg,temp_status),
+        "electrical_status": (electrical_msg,electrical_status),
+        "brake_status": (brake_msg, brake_status),
         "overall_status": overall
     } 
 def electrical_system_check(battery_voltage):
     if battery_voltage < 22.0:
-        return "NO-GO: TOO LOW, UNSAFE TO DISPATCH"
+        return ("NO-GO: TOO LOW, UNSAFE TO DISPATCH",2)
     elif 22.0 <= battery_voltage <=24.0:
-        return "WARNING: LOW, WEAK BATTERY/MARGINAL POWER"
+        return ("WARNING: LOW, WEAK BATTERY/MARGINAL POWER",1)
     elif 24.0 <= battery_voltage <= 28.0:
-        return "OK"
+        return "OK",0
     elif battery_voltage > 28.0:
-        return "NO-GO: OVERVOLTAGE, RISK TO AVIONICS/ELECTRONICS"
+        return ("NO-GO: OVERVOLTAGE, RISK TO AVIONICS/ELECTRONICS",2)
     else:
-        return "NO-GO: BATTERY VOLTAGE READING OUT OF EXPECTED RANGE..."
+        return ("NO-GO: BATTERY VOLTAGE READING OUT OF EXPECTED RANGE...",2)
 def brake_pressure_check(brakes):
     if brakes < 500:
-        return "NO-GO: BRAKE PRESSURE CRITICALLY LOW"
+        return ("NO-GO: BRAKE PRESSURE CRITICALLY LOW",2)
     elif 500 <= brakes <= 800:
-        return "WARNING: BRAKE PRESSURE LOW"
+        return ("WARNING: BRAKE PRESSURE LOW",1)
     elif 800 <= brakes <= 1200:
-        return "OK: BRAKE PRESSURE NORMAL"
+        return ("OK: BRAKE PRESSURE NORMAL",0)
     elif 1200 <= brakes <= 1500:
-        return "WARNING: BRAKE PRESSURE HIGH"
+        return ("WARNING: BRAKE PRESSURE HIGH",1)
     elif brakes > 1500:
-        return "NO-GO: BRAKE PRESSURE DANGEROUSLY HIGH (RISK OF LINE RUPTURE)"
+        return ("NO-GO: BRAKE PRESSURE DANGEROUSLY HIGH (RISK OF LINE  RUPTURE",2)
     else:
-        return "NO-GO: BRAKE PRESSURE READING OUT OF EXPECTED RANGE"
+        return ("NO-GO: BRAKE PRESSURE READING OUT OF EXPECTED RANGE",2)
 
 
     
