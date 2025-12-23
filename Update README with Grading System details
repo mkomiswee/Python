@@ -1,0 +1,57 @@
+# 📝 Grading System v1
+
+## 📖 Overview
+This project is a **menu-driven Python program** that allows users to input student scores and perform operations such as:
+- Converting numeric scores into **letter grades (A–F)**
+- Calculating the **class average**
+- Finding the **highest and lowest scores**
+- Filtering **passing vs. failing grades**
+
+It’s designed to practice **functions, loops, conditionals, and list operations** while building a portfolio-ready project.
+
+---
+
+## 🚀 Features
+- Interactive menu for user-friendly navigation  
+- Grade conversion logic (90+ = A, 80+ = B, etc.)  
+- Class statistics: average, min, max  
+- Filter function: separates failing grades from passing ones  
+- Dynamic input: refresh scores anytime  
+
+---
+
+## 🧩 How It Works
+1. Run the program in your terminal.  
+2. Enter student scores separated by spaces.  
+3. Use the menu to:
+   - Show grades
+   - View highest/lowest score
+   - Calculate class average
+   - Filter passing vs. failing
+   - Enter new scores
+   - Quit  
+
+---
+
+---
+
+## 🎯 Learning Goals
+This project helps practice:
+- Building **modular functions**  
+- Designing **menu-driven programs**  
+- Applying the **filter pattern** (empty list → loop → condition → append → return)  
+- Strengthening GitHub documentation skills  
+
+---
+
+## 📌 Future Improvements
+- Add student names alongside scores  
+- Save results to a file (CSV or JSON)  
+- Expand grading logic to include GPA calculation  
+- Build a GUI version with Tkinter or PyQt  
+
+---
+
+## 👨‍💻 About Me
+I’m a **Software Engineer** focused on Python development and portfolio building. My approach is hands-on: I dissect, experiment, and refine code to master patterns. This repository is both a **learning dojo** and a **portfolio showcase**.
+
