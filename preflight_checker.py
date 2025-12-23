@@ -159,6 +159,69 @@ def brake_pressure_check(brakes):
         return ("NO-GO: BRAKE PRESSURE DANGEROUSLY HIGH (RISK OF LINE  RUPTURE",2)
     else:
         return ("NO-GO: BRAKE PRESSURE READING OUT OF EXPECTED RANGE",2)
+    
+
+
+def fleet():
+    fleet = [
+        {
+            "tail_number": "N4821A",
+            "fuel": 55,
+            "oil": 72,
+            "temp": 210,
+            "hydrualic_pressure": 2900,
+            "battery_voltage": 24.5,
+            "brakes": 950
+        },
+        {
+            "tail_number": "N7713Q",
+            "fuel": 12,
+            "oil": 38,
+            "temp": 165,
+            "hydrualic_pressure": 2400,
+            "battery_voltage": 23.1,
+            "brakes": 780
+        },
+        {
+            "tail_number": "N9027K",
+            "fuel": 0,
+            "oil": 18,
+            "temp": 95,
+            "hydrualic_pressure": 500,
+            "battery_voltage": 21.4,
+            "brakes": 430
+        },
+        {
+            "tail_number": "N3159X",
+            "fuel": 88,
+            "oil": 110,
+            "temp": 255,
+            "hydrualic_pressure": 4100,
+            "battery_voltage": 26.7,
+            "brakes": 1300
+        },
+        {
+            "tail_number": "N6602M",
+            "fuel": 102,
+            "oil": 125,
+            "temp": 240,
+            "hydrualic_pressure": 5200,
+            "battery_voltage": 29.1,
+            "brakes": 1600
+        }
+    ]
+
+    for index, airplane in enumerate(fleet, start=1):
+        print(index, airplane["tail_number"])
+
+
+def evalute_fleet(fleet):
+    results = []
+
+    for index, airplane in enumerate(fleet, start=1):
+        report = (evaluation_report(airplane["fuel"], airplane["oil"], airplane["temp"], airplane["hydrualic_pressure"], airplane["battery_voltage"],airplane["brakes"]))
+        results.append({"index": index, "tail_number": airplane["tail_number"], "report":[report]})
+
 
 
     
